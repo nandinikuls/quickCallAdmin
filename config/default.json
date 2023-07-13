@@ -1,0 +1,8 @@
+{
+    "port": 8081,
+    "logConfig": {
+        "logFolder":".//logs//",
+        "logFile": "%DATE%.log",
+        "logLevel" : "info"
+       }
+    }

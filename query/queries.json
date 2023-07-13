@@ -1,0 +1,12 @@
+{
+    "loginUser" : "SELECT * FROM tbUsers WHERE Email = @Email AND Password = @Password",
+    "alreadyExistData" : "SELECT * FROM tbUsers WHERE Email = @Email AND Password = @Password",
+    "modifyDid" : "UPDATE DIDMaster SET BrCode = @BrCode, City = @City, EmpCode = @EmpCode, EmpName = @EmpName, ContactNumber = @ContactNumber, CampaignID = @CampaignID, SiteCode = @SiteCode, Active = @Active, Comment = @Comment, CreatedOn = @CreatedOn  WHERE DIDNO = @DIDNO",
+    "modifyAgent" : "UPDATE  AgentMst SET DIDNO = @DIDNO where AgentID = @AgentID",
+    "getData" : "SELECT Name, Address FROM AgentMst WHERE AgentID = @AgentID",
+    "didActiveList" : "SELECT DIDNO, SiteCode FROM DIDMaster WHERE Active = @Active",
+    "didStatus" : "SELECT BrCode, City, EmpCode as AgentID, EmpName as AgentName, ContactNumber, DIDNO, CampaignID, SiteCode, Comment, CreatedOn, ModifiedOn, DeactivatedOn, CASE WHEN Active = '0' THEN 'InActive' WHEN Active = '1' THEN 'Active'WHEN Active = '2' THEN 'Free' END as DIDStatus from DIDMaster",
+    "updateDid" : "UPDATE DIDMaster SET BrCode = @BrCode, City = @City, EmpCode = @EmpCode, EmpName = @EmpName, ContactNumber = @ContactNumber, CampaignID = @CampaignID, SiteCode = @SiteCode, Active = @Active, Comment = @Comment, CreatedOn = @CreatedOn  WHERE DIDNO = @DIDNO",
+    "deactivateQuery" : "UPDATE DIDMaster SET Active = '0' , DeactivatedOn = @DeactivatedOn where DIDNO = @DIDNO",
+    "getInboundCamp" : "select CampaignID, InOut, sitecode from CampaignMst where InOut='Inbound' AND sitecode=@sitecode"
+}

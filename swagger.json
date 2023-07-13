@@ -1,0 +1,387 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "API Documentation",
+        "description": "API Documentation for DID Module"
+    },
+    "host": "192.168.10.106:8081",
+    "basePath": "/",
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "Header",
+            "description": "Enter your bearer token in the format **Bearer &lt;token>**"
+        }
+    },
+    "paths": {
+        "/loginUser": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass here Email and Password",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "Email": {
+                        "type": "string"
+                      },
+                      "Password": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "produces": ["application/json"],
+            "post": {
+                "tags": ["User Login"],
+                "summary": "Login Email Id",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/modifyBoth": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass all the details here.",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "BrCode": {
+                        "type": "string"
+                      },
+                      "City": {
+                        "type": "string"
+                      },
+                      "EmpCode": {
+                        "type": "string"
+                      },
+                      "EmpName": {
+                        "type": "string"
+                      },
+                      "ContactNumber": {
+                        "type": "string"
+                      },
+                      "DIDNO": {
+                        "type": "string"
+                      },
+                      "CampaignID": {
+                        "type": "string"
+                      },
+                      "SiteCode": {
+                        "type": "string"
+                      },
+                      "Active": {
+                        "type": "string"
+                      },
+                      "Comment": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "produces": ["application/json"],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": ["API Routes"],
+                "summary": "Update one from another",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/getAgentData": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass AgentID here",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "AgentID": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": ["API Routes"],
+                "summary": "Get name & address from Agent Id",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/didActiveUsers": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass Active here",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "Active": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": ["API Routes"],
+                "summary": "Get DIDNO and SiteCode by Active",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/didActiveStatus": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass SiteCode here.",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "SiteCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": ["API Routes"],
+                "summary": "Get Active Status by SiteCode",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/updateDID": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass all the details here.",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "BrCode": {
+                        "type": "string"
+                      },
+                      "City": {
+                        "type": "string"
+                      },
+                      "EmpCode": {
+                        "type": "string"
+                      },
+                      "EmpName": {
+                        "type": "string"
+                      },
+                      "ContactNumber": {
+                        "type": "string"
+                      },
+                      "DIDNO": {
+                        "type": "string"
+                      },
+                      "CampaignID": {
+                        "type": "string"
+                      },
+                      "SiteCode": {
+                        "type": "string"
+                      },
+                      "Active": {
+                        "type": "string"
+                      },
+                      "Comment": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "produces": [
+                "application/json"
+            ],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": [
+                    "API Routes"
+                ],
+                "summary": "Update DID",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/deactivateDID": {
+            "parameters":  [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass here DIDStatus and DIDNO",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "DIDStatus": {
+                        "type": "string"
+                      },
+                      "DIDNO": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "produces": [
+                "application/json"
+            ],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": [
+                    "API Routes"
+                ],
+                "summary": "Deactivate DID Active Status",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/getInboundCampaign": {
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "You should pass SiteCode here.",
+                  "required": true,
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "SiteCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+            "produces": [
+                "application/json"
+            ],
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "tags": [
+                    "API Routes"
+                ],
+                "summary": "Get Inbound campaign",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "required": [
+                "email",
+                "password"
+            ]
+        },
+        "Users": {
+            "type": "array",
+            "$ref": "#/definitions/User"
+        }
+    }
+}
